@@ -21,7 +21,7 @@ casefound = 0
 for z in value:
     found = "Undetected Value"
     for x in streetwordlist:
-        if x in z[7].lower():
+        if x in z[9].lower():
             found = "Detected Course"
             streetwordlist[x]+=1
             casefound+=1

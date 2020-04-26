@@ -14,7 +14,7 @@ with open("../working_data/initialdata-without-no.tsv") as fd:
     for row in rd:
         if row[1] == 'Yes':
             testcount+=1
-            if row[1] == 'Yes'and row[3] =="Student" :
+            if row[1] == 'Yes'and row[4] =="Student" :
                 row.insert(0,count)
                 value.append(row)
                 neededdata.append(row)

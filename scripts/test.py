@@ -8,7 +8,7 @@ with open("../working_data/studentlist.tsv") as fd:
         value.append(row)
 
 streetwordlist = {}
-with open("../dictlist/collegebranchcampus-list.txt") as fd:
+with open("../dictlist/courselist.txt") as fd:
     temp = fd.read().splitlines()
     for x in temp:
         streetwordlist[x.lower()] = 0
@@ -21,8 +21,8 @@ casefound = 0
 for z in value:
     found = "Undetected Value"
     for x in streetwordlist:
-        if x in z[3].lower():
-            found = "Detected College"
+        if x in z[9].lower():
+            found = "Detected Course"
             streetwordlist[x]+=1
             casefound+=1
             break
@@ -35,10 +35,10 @@ for z in value:
         
         
     
-with open("../Output-Results/RawCounterResults/raw-collegebranchcampuscounter-results.tsv","w") as fd:
+with open("../Output-Results/RawCounterResults/raw-coursecounter-results.tsv","w") as fd:
     writer = csv.writer(fd, delimiter="\t", quotechar='"')
     writer.writerows(value)
-with open("../Output-Results/CounterResults/collegebranchcampuslistcount.tsv","w") as fd:
+with open("../Output-Results/CounterResults/courselistcount.tsv","w") as fd:
     writer = csv.writer(fd, delimiter="\t", quotechar='"')
     writer.writerow([streetwordlist])
 
@@ -49,5 +49,4 @@ if z[2] in i[1].lower():
             break
     results.append([x,found])
     x+=1
-"""# -*- coding: utf-8 -*-
-
+"""
