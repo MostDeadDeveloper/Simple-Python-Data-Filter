@@ -4,7 +4,7 @@
 
 from Counter import (BaseCounter,
                     getWordListFromFile,
-                    BaseCounter_and_TransferTo_WorkingData)
+                    BaseCounterFilter_and_TransferTo_WorkingData)
 
 """
 def BaseCounter(
@@ -19,7 +19,7 @@ def BaseCounter(
 """
 #Student Counter
 wordlist = {"student":0}
-BaseCounter_and_TransferTo_WorkingData(wordlist,
+BaseCounterFilter_and_TransferTo_WorkingData(wordlist,
             "initialdata-without-no.tsv",
             4,
             queryname="Student Query",
@@ -30,14 +30,14 @@ BaseCounter_and_TransferTo_WorkingData(wordlist,
 
 
 
-#FAculty  Counter
+#Faculty  Counter
 wordlist = {"faculty":0}
-BaseCounter(
+BaseCounterFilter_and_TransferTo_WorkingData(
             wordlist,
             "initialdata-without-no.tsv",
             4,
             queryname="Faculty Query",
             delimiterval="\t",
             counterresults_filename="faculty_counter_results.tsv",
-            raw_counterresults_filename="raw_faculty-counter_results.tsv"
+            raw_counterresults_filename="facultylist.tsv"
             )

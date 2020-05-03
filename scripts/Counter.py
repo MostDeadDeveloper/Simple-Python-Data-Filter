@@ -53,45 +53,47 @@ def getWordListFromFile(dictwordlist_filename):
     return dictwordlist
 
 def BaseCounter_and_TransferTo_WorkingData(dictwordlist,
-                                            source_filename,
-                                            row_index,
-                                            queryname="Current Query",
-                                            delimiterval="\t",
-                                            counterresults_filename="default-counter_results.tsv",
-                                            raw_counterresults_filename="raw_default-counter_results.tsv"
-                                            ):
-    value = []
-    totalcount =0
-    with open("../working_data/"+source_filename) as fd:
-        rd = csv.reader(fd, delimiter=delimiterval, quotechar='"')
-        for row in rd:
-            value.append(row)
-            totalcount+=1
+										   source_filename,
+										   row_index,
+										   queryname="Current Query",
+										   delimiterval="\t",
+										   counterresults_filename="default-counter_results.tsv",
+										   raw_counterresults_filename="raw_default-counter_results.tsv"
+									   ):
+	value = []
+	finalvalues = []
+	totalcount =0
+	with open("../working_data/"+source_filename) as fd:
+		rd = csv.reader(fd, delimiter=delimiterval, quotechar='"')
+		for row in rd:
+			value.append(row)
+			totalcount+=1
 
     #wordlist = {"anonas":0,"de dios":0,"luisa":0,"mulawin":0,"duhat":0}
-    x = 1
-    casefound = 0
-    for z in value:
-        found = "Undetected Value"
-        for x in dictwordlist:
-            if x.lower() in z[row_index].lower():
-                dictwordlist[x]+=1
-                casefound+=1
-                break
+	x = 1
+	casefound = 0
+	for z in value:
+		found = "Undetected Value"
+		for x in dictwordlist:
+			if x.lower() in z[row_index].lower():
+				dictwordlist[x]+=1
+				casefound+=1
+				finalvalues.append(z)
+				break
 
-        z.append(found)
+	z.append(found)
 
-    with open("../working_data/"+raw_counterresults_filename,"w") as fd:
-        writer = csv.writer(fd, delimiter="\t", quotechar='"')
-        writer.writerows(value)
-    with open("../Output-Results/CounterResults/"+counterresults_filename,"w") as fd:
-        writer = csv.writer(fd, delimiter="\t", quotechar='"')
-        writer.writerow([dictwordlist])
+	with open("../working_data/"+raw_counterresults_filename,"w") as fd:
+		writer = csv.writer(fd, delimiter="\t", quotechar='"')
+		writer.writerows(value)
+	with open("../Output-Results/CounterResults/"+counterresults_filename,"w") as fd:
+		writer = csv.writer(fd, delimiter="\t", quotechar='"')
+		writer.writerow([dictwordlist])
 
     #display all results:
-    print("\n{} Query Results:".format(queryname))
-    print("Found Cases : {} , out of {}".format(casefound,totalcount))
-    print(dictwordlist)
+	print("\n{} Query Results:".format(queryname))
+	print("Found Cases : {} , out of {}".format(casefound,totalcount))
+	print(dictwordlist)
 
 def BaseCounter_self_aware_dictionary(
 		dictwordlist,
@@ -143,7 +145,7 @@ def BaseCounter_self_aware_dictionary(
 
 
 
-def BaseCounter_self_aware_dictionary_output_Numerical_Data(
+def BaseCounter_self_aware_dictionary_and_output_Numerical_Data(
 		dictwordlist,
 		source_filename,
 		row_index,
@@ -200,3 +202,46 @@ def BaseCounter_self_aware_dictionary_output_Numerical_Data(
 	print("Found Cases : {} , out of {}".format(casefound,totalcount))
 	print(dictwordlist)
 
+
+
+# BaseCounterFilter removes from the sourcefile rows that does not have the words from the dictlist.
+def BaseCounterFilter_and_TransferTo_WorkingData(dictwordlist,
+										   source_filename,
+										   row_index,
+										   queryname="Current Query",
+										   delimiterval="\t",
+										   counterresults_filename="default-counter_results.tsv",
+										   raw_counterresults_filename="raw_default-counter_results.tsv"
+									   ):
+	value = []
+	finalvalues = []
+	totalcount =0
+	with open("../working_data/"+source_filename) as fd:
+		rd = csv.reader(fd, delimiter=delimiterval, quotechar='"')
+		for row in rd:
+			value.append(row)
+			totalcount+=1
+
+    #wordlist = {"anonas":0,"de dios":0,"luisa":0,"mulawin":0,"duhat":0}
+	x = 1
+	casefound = 0
+	for z in value:
+		found = "Undetected Value"
+		for x in dictwordlist:
+			if x.lower() in z[row_index].lower():
+				dictwordlist[x]+=1
+				casefound+=1
+				finalvalues.append(z)
+				break
+
+	with open("../working_data/"+raw_counterresults_filename,"w") as fd:
+		writer = csv.writer(fd, delimiter="\t", quotechar='"')
+		writer.writerows(finalvalues)
+	with open("../Output-Results/CounterResults/"+counterresults_filename,"w") as fd:
+		writer = csv.writer(fd, delimiter="\t", quotechar='"')
+		writer.writerow([dictwordlist])
+
+    #display all results:
+	print("\n{} Query Results:".format(queryname))
+	print("Found Cases : {} , out of {}".format(casefound,totalcount))
+	print(dictwordlist)
