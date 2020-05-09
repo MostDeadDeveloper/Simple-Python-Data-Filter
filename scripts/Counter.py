@@ -164,15 +164,15 @@ def BaseCounter_self_aware_dictionary_and_output_Numerical_Data(
 
 	casefound = 0
 	for z in value:
-		numericalindex = 0
+		numericalindex = 1
 		found = "Undetected Value"
 		for x in dictwordlist:
-			numericalindex +=1
 			if x.lower() in z[row_index].lower():
 				found = "Detected Value"
 				dictwordlist[x]+=1
 				casefound+=1
 				break
+			numericalindex +=1
 
 		# adds it to the dictlist if it is a new kind of word, and if the string word is not empty.
 		if ((found == "Undetected Value")and(z[row_index].lower() != '')):
@@ -183,7 +183,7 @@ def BaseCounter_self_aware_dictionary_and_output_Numerical_Data(
 		z.append(found)
 
 		# converts the data into numerical data at the end of the file for data analysis.
-		if found == "Detected Value":
+		if z[row_index].lower() != '':
 			z.append(numericalindex)
 		else:
 			z.append(0)
