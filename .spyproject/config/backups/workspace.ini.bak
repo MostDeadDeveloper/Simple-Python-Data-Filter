@@ -6,5 +6,5 @@ save_non_project_files = False
 
 [main]
 version = 0.2.0
-recent_files = ['main.py', 'scripts/counters_all.py', 'scripts/counter_faculty.py', 'scripts/Counter.py', 'scripts/counter_student.py']
+recent_files = ['main.py', 'scripts/Counter.py', 'scripts/counter_student.py']
 

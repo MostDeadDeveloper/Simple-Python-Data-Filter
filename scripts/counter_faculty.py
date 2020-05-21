@@ -120,7 +120,7 @@ BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
             "AccessToTablets - Faculty Query",
             delimiterval="\t",
             counterresults_filename="AccessToTablets-faculty-counter_results.tsv",
-            raw_counterresults_filename="raw-FrequencyofPhoneUsage-faculty-counter_results.tsv"
+            raw_counterresults_filename="raw-AccessToTablets-faculty-counter_results.tsv"
             )
 
 

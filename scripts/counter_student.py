@@ -202,7 +202,7 @@ BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
               )
 
 wordlist = {}
-# What type of internet subscription do you have? 25 : Student
+# What type of internet subscription do you have? 25 : Student Note :  Change due to same keywords, making inccorect counts.
 BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
             "studentlist.tsv",
             25,
@@ -213,7 +213,7 @@ BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
               )
 
 wordlist = {}
-# What/Who is your main Internet service provider? 26 :  Student
+# What/Who is your main Internet service provider? 26 :  Student Note :  Change due to same keywords, making inccorect counts.
 BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
             "studentlist.tsv",
             26,
@@ -225,7 +225,7 @@ BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
 
 
 wordlist = {}
-# How fast is your internet connectivity? 27 :  Student
+# How fast is your internet connectivity? 27 :  Student 
 BaseCounter_self_aware_dictionary_and_output_Numerical_Data(wordlist,
             "studentlist.tsv",
             27,
