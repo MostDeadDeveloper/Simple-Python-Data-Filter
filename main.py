@@ -4,8 +4,8 @@ import csv
 value = []
 count = 1
 neededdata=[]
-allowed = 0 
-accepteddatacount = 1 
+allowed = 0
+accepteddatacount = 1
 with open("originaldata.csv") as fd:
     rd = csv.reader(fd, delimiter=",", quotechar='"')
     for row in rd:
@@ -18,20 +18,20 @@ with open("originaldata.csv") as fd:
         count+=1
 
 records = neededdata
-duplicates = []
-neededdata.sort()
-z = 0 
-while(z != len(neededdata)-1):
-    if neededdata[z][2] == neededdata[z+1][2]:
-        duplicates.append([z,neededdata[z+1]])
-        neededdata.pop(z+1)
-    z+=1
-       
+# duplicates = []
+# neededdata.sort()
+# z = 0
+# while(z != len(neededdata)-1):
+#     if neededdata[z][2] == neededdata[z+1][2]:
+#         duplicates.append([z,neededdata[z+1]])
+#         neededdata.pop(z+1)
+#     z+=1
+
 
 with open("working_data/initialdata-without-no.csv","w") as fd:
     writer = csv.writer(fd, delimiter=",")
     writer.writerows(neededdata)
-    
+
 with open("working_data/initialdata-without-no.tsv","w") as fd:
     writer = csv.writer(fd, delimiter="\t", quotechar='"') #for tsv
     writer.writerows(neededdata)
